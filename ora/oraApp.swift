@@ -267,6 +267,61 @@ struct OraApp: App {
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.previousAlt)
                 .hidden()
+                
+                // Tab switching shortcuts CMD+1 through CMD+9
+                Button("") {
+                    tabManager.switchToTabAtIndex(1)
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.tab1)
+                .hidden()
+                
+                Button("") {
+                    tabManager.switchToTabAtIndex(2)
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.tab2)
+                .hidden()
+                
+                Button("") {
+                    tabManager.switchToTabAtIndex(3)
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.tab3)
+                .hidden()
+                
+                Button("") {
+                    tabManager.switchToTabAtIndex(4)
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.tab4)
+                .hidden()
+                
+                Button("") {
+                    tabManager.switchToTabAtIndex(5)
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.tab5)
+                .hidden()
+                
+                Button("") {
+                    tabManager.switchToTabAtIndex(6)
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.tab6)
+                .hidden()
+                
+                Button("") {
+                    tabManager.switchToTabAtIndex(7)
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.tab7)
+                .hidden()
+                
+                Button("") {
+                    tabManager.switchToTabAtIndex(8)
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.tab8)
+                .hidden()
+                
+                Button("") {
+                    tabManager.switchToTabAtIndex(9)
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.tab9)
+                .hidden()
             }
         }
         Settings {

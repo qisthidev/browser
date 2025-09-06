@@ -387,6 +387,25 @@ class TabManager: ObservableObject {
             activateTab(sortedTabs[sortedTabs.count - 1])
         }
     }
+    
+    func switchToTabAtIndex(_ index: Int) {
+        guard let container = activeContainer else { return }
+        
+        // Get all available tabs, preferring ready ones but falling back to all
+        let readyTabs = container.tabs.filter(\.isWebViewReady)
+        let tabs = readyTabs.isEmpty ? Array(container.tabs) : readyTabs
+        
+        guard !tabs.isEmpty else { return }
+        
+        // Sort by order for consistent navigation
+        let sortedTabs = tabs.sorted { $0.order < $1.order }
+        
+        // Convert 1-based index to 0-based and ensure it's within bounds
+        let tabIndex = index - 1
+        guard tabIndex >= 0 && tabIndex < sortedTabs.count else { return }
+        
+        activateTab(sortedTabs[tabIndex])
+    }
 
     private func fetchContainers() -> [TabContainer] {
         do {
