@@ -114,6 +114,22 @@ struct OraApp: App {
                                 }
                                 return true
                             }
+                        } else if event.keyCode == 33 {  // ] key
+                            if event.modifierFlags.contains([.command, .shift]) {
+                                // Cmd+Shift+] - Next tab
+                                DispatchQueue.main.async {
+                                    tabManager.switchToNextTab()
+                                }
+                                return true
+                            }
+                        } else if event.keyCode == 30 {  // [ key
+                            if event.modifierFlags.contains([.command, .shift]) {
+                                // Cmd+Shift+[ - Previous tab
+                                DispatchQueue.main.async {
+                                    tabManager.switchToPreviousTab()
+                                }
+                                return true
+                            }
                         }
                         return false
                     }
@@ -238,6 +254,19 @@ struct OraApp: App {
                     tabManager.switchToPreviousTab()
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.previous)
+                
+                // Alternative shortcuts for tab switching
+                Button("") {
+                    tabManager.switchToNextTab()
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.nextAlt)
+                .hidden()
+                
+                Button("") {
+                    tabManager.switchToPreviousTab()
+                }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.previousAlt)
+                .hidden()
             }
         }
         Settings {
