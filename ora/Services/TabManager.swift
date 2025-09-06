@@ -389,22 +389,39 @@ class TabManager: ObservableObject {
     }
     
     func switchToTabAtIndex(_ index: Int) {
-        guard let container = activeContainer else { return }
+        print("🔍 DEBUG: switchToTabAtIndex called with index: \(index)")
+        
+        guard let container = activeContainer else { 
+            print("🔍 DEBUG: No active container")
+            return 
+        }
         
         // Get all available tabs, preferring ready ones but falling back to all
         let readyTabs = container.tabs.filter(\.isWebViewReady)
         let tabs = readyTabs.isEmpty ? Array(container.tabs) : readyTabs
         
-        guard !tabs.isEmpty else { return }
+        print("🔍 DEBUG: Found \(tabs.count) tabs (ready: \(readyTabs.count), total: \(container.tabs.count))")
+        
+        guard !tabs.isEmpty else { 
+            print("🔍 DEBUG: No tabs available")
+            return 
+        }
         
         // Sort by order for consistent navigation
         let sortedTabs = tabs.sorted { $0.order < $1.order }
         
         // Convert 1-based index to 0-based and ensure it's within bounds
         let tabIndex = index - 1
-        guard tabIndex >= 0 && tabIndex < sortedTabs.count else { return }
+        print("🔍 DEBUG: Converted index \(index) to tabIndex \(tabIndex), sortedTabs.count: \(sortedTabs.count)")
         
-        activateTab(sortedTabs[tabIndex])
+        guard tabIndex >= 0 && tabIndex < sortedTabs.count else { 
+            print("🔍 DEBUG: Index out of bounds")
+            return 
+        }
+        
+        let targetTab = sortedTabs[tabIndex]
+        print("🔍 DEBUG: Switching to tab: \(targetTab.title) (id: \(targetTab.id))")
+        activateTab(targetTab)
     }
 
     private func fetchContainers() -> [TabContainer] {
