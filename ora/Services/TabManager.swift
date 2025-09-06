@@ -348,23 +348,43 @@ class TabManager: ObservableObject {
     
     func switchToNextTab() {
         guard let container = activeContainer else { return }
-        let tabs = container.tabs.filter(\.isWebViewReady).sorted { $0.order < $1.order }
+        
+        // Get all available tabs, preferring ready ones but falling back to all
+        let readyTabs = container.tabs.filter(\.isWebViewReady)
+        let tabs = readyTabs.isEmpty ? Array(container.tabs) : readyTabs
+        
         guard tabs.count > 1, let currentTab = activeTab else { return }
         
-        if let currentIndex = tabs.firstIndex(where: { $0.id == currentTab.id }) {
-            let nextIndex = (currentIndex + 1) % tabs.count
-            activateTab(tabs[nextIndex])
+        // Sort by order for consistent navigation
+        let sortedTabs = tabs.sorted { $0.order < $1.order }
+        
+        if let currentIndex = sortedTabs.firstIndex(where: { $0.id == currentTab.id }) {
+            let nextIndex = (currentIndex + 1) % sortedTabs.count
+            activateTab(sortedTabs[nextIndex])
+        } else {
+            // Current tab not found, activate first tab
+            activateTab(sortedTabs[0])
         }
     }
     
     func switchToPreviousTab() {
         guard let container = activeContainer else { return }
-        let tabs = container.tabs.filter(\.isWebViewReady).sorted { $0.order < $1.order }
+        
+        // Get all available tabs, preferring ready ones but falling back to all
+        let readyTabs = container.tabs.filter(\.isWebViewReady)
+        let tabs = readyTabs.isEmpty ? Array(container.tabs) : readyTabs
+        
         guard tabs.count > 1, let currentTab = activeTab else { return }
         
-        if let currentIndex = tabs.firstIndex(where: { $0.id == currentTab.id }) {
-            let previousIndex = (currentIndex - 1 + tabs.count) % tabs.count
-            activateTab(tabs[previousIndex])
+        // Sort by order for consistent navigation
+        let sortedTabs = tabs.sorted { $0.order < $1.order }
+        
+        if let currentIndex = sortedTabs.firstIndex(where: { $0.id == currentTab.id }) {
+            let previousIndex = (currentIndex - 1 + sortedTabs.count) % sortedTabs.count
+            activateTab(sortedTabs[previousIndex])
+        } else {
+            // Current tab not found, activate last tab
+            activateTab(sortedTabs[sortedTabs.count - 1])
         }
     }
 

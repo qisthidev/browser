@@ -101,8 +101,16 @@ struct OraApp: App {
 
                         if event.keyCode == 48 {  // Tab key
                             if event.modifierFlags.contains(.control) {
-                                DispatchQueue.main.async {
-                                    appState.isFloatingTabSwitchVisible = true
+                                if event.modifierFlags.contains(.shift) {
+                                    // Ctrl+Shift+Tab - Previous tab
+                                    DispatchQueue.main.async {
+                                        tabManager.switchToPreviousTab()
+                                    }
+                                } else {
+                                    // Ctrl+Tab - Next tab
+                                    DispatchQueue.main.async {
+                                        tabManager.switchToNextTab()
+                                    }
                                 }
                                 return true
                             }
