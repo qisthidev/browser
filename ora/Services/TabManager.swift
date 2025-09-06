@@ -388,8 +388,8 @@ class TabManager: ObservableObject {
         }
     }
     
-    func switchToTabAtIndex(_ tabNumber: Int) {
-        print("🔍 DEBUG: switchToTabAtIndex called with tabNumber: \(tabNumber)")
+    func switchToTabAtIndex(_ index: Int) {
+        print("🔍 DEBUG: switchToTabAtIndex called with index: \(index)")
         
         guard let container = activeContainer else { 
             print("🔍 DEBUG: No active container")
@@ -411,15 +411,15 @@ class TabManager: ObservableObject {
         let sortedTabs = tabs.sorted { $0.order < $1.order }
         
         // Convert 1-based index to 0-based and ensure it's within bounds
-        let tabIndex = tabNumber - 1
-        print("🔍 DEBUG: Converted tabNumber \(tabNumber) to tabIndex \(tabIndex), sortedTabs.count: \(sortedTabs.count)")
+        let arrayIndex = index - 1
+        print("🔍 DEBUG: Converted index \(index) to arrayIndex \(arrayIndex), sortedTabs.count: \(sortedTabs.count)")
         
-        guard tabIndex >= 0 && tabIndex < sortedTabs.count else { 
+        guard arrayIndex >= 0 && arrayIndex < sortedTabs.count else { 
             print("🔍 DEBUG: Index out of bounds")
             return 
         }
         
-        let targetTab = sortedTabs[tabIndex]
+        let targetTab = sortedTabs[arrayIndex]
         print("🔍 DEBUG: Switching to tab: \(targetTab.title) (id: \(targetTab.id))")
         activateTab(targetTab)
     }
