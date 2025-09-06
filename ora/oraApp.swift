@@ -271,64 +271,70 @@ struct OraApp: App {
             
             // Tab switching shortcuts CMD+1 through CMD+9 - moved to separate CommandGroup
             CommandGroup(after: .toolbar) {
+                // Test shortcut with a different key combination to see if shortcuts work at all
+                Button("Test Shortcut") {
+                    print("🔍 DEBUG: TEST SHORTCUT CMD+Shift+X triggered - keyboard shortcuts are working!")
+                }
+                .keyboardShortcut("x", modifiers: [.command, .shift])
+                
                 Button("") {
-                    print("🔍 DEBUG: CMD+1 button triggered")
+                    print("🔍 DEBUG: CMD+OPT+1 button triggered")
                     tabManager.switchToTabAtIndex(1)
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.tab1)
                 .hidden()
                 
                 Button("") {
-                    print("🔍 DEBUG: CMD+2 button triggered")
+                    print("🔍 DEBUG: CMD+OPT+2 button triggered")
                     tabManager.switchToTabAtIndex(2)
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.tab2)
                 .hidden()
                 
                 Button("") {
-                    print("🔍 DEBUG: CMD+3 button triggered")
+                    print("🔍 DEBUG: CMD+OPT+3 button triggered")
                     tabManager.switchToTabAtIndex(3)
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.tab3)
                 .hidden()
                 
                 Button("") {
-                    print("🔍 DEBUG: CMD+4 button triggered")
+                    print("🔍 DEBUG: CMD+OPT+4 button triggered")
                     tabManager.switchToTabAtIndex(4)
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.tab4)
                 .hidden()
                 
                 Button("") {
-                    print("🔍 DEBUG: CMD+5 button triggered")
+                    print("🔍 DEBUG: CMD+OPT+5 button triggered")
                     tabManager.switchToTabAtIndex(5)
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.tab5)
                 .hidden()
                 
                 Button("") {
-                    print("🔍 DEBUG: CMD+6 button triggered")
+                    print("🔍 DEBUG: CMD+OPT+6 button triggered")
                     tabManager.switchToTabAtIndex(6)
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.tab6)
                 .hidden()
                 
                 Button("") {
-                    print("🔍 DEBUG: CMD+7 button triggered")
+                    print("🔍 DEBUG: CMD+OPT+7 button triggered")
                     tabManager.switchToTabAtIndex(7)
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.tab7)
                 .hidden()
                 
                 Button("") {
-                    print("🔍 DEBUG: CMD+8 button triggered")
+                    print("🔍 DEBUG: CMD+OPT+8 button triggered")
                     tabManager.switchToTabAtIndex(8)
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.tab8)
                 .hidden()
                 
                 Button("") {
-                    print("🔍 DEBUG: CMD+9 button triggered")
+                    print("🔍 DEBUG: CMD+OPT+9 button triggered")
                     tabManager.switchToTabAtIndex(9)
                 }
                 .keyboardShortcut(KeyboardShortcuts.Tabs.tab9)

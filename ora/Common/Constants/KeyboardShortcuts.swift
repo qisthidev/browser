@@ -21,15 +21,15 @@ enum KeyboardShortcuts {
         static let moveLeft = KeyboardShortcut(.leftArrow, modifiers: [.option, .command])
         static let pin = KeyboardShortcut("d", modifiers: [.command])
 
-        static let tab1 = KeyboardShortcut("1", modifiers: [.command])
-        static let tab2 = KeyboardShortcut("2", modifiers: [.command])
-        static let tab3 = KeyboardShortcut("3", modifiers: [.command])
-        static let tab4 = KeyboardShortcut("4", modifiers: [.command])
-        static let tab5 = KeyboardShortcut("5", modifiers: [.command])
-        static let tab6 = KeyboardShortcut("6", modifiers: [.command])
-        static let tab7 = KeyboardShortcut("7", modifiers: [.command])
-        static let tab8 = KeyboardShortcut("8", modifiers: [.command])
-        static let tab9 = KeyboardShortcut("9", modifiers: [.command])
+        static let tab1 = KeyboardShortcut("1", modifiers: [.command, .option])
+        static let tab2 = KeyboardShortcut("2", modifiers: [.command, .option])
+        static let tab3 = KeyboardShortcut("3", modifiers: [.command, .option])
+        static let tab4 = KeyboardShortcut("4", modifiers: [.command, .option])
+        static let tab5 = KeyboardShortcut("5", modifiers: [.command, .option])
+        static let tab6 = KeyboardShortcut("6", modifiers: [.command, .option])
+        static let tab7 = KeyboardShortcut("7", modifiers: [.command, .option])
+        static let tab8 = KeyboardShortcut("8", modifiers: [.command, .option])
+        static let tab9 = KeyboardShortcut("9", modifiers: [.command, .option])
     }
 
     enum Navigation {
@@ -96,15 +96,15 @@ extension KeyboardShortcuts {
             .init(category: "Tabs", name: "Move Tab Right", display: "⌥⌘→"),
             .init(category: "Tabs", name: "Move Tab Left", display: "⌥⌘←"),
             .init(category: "Tabs", name: "Pin Tab", display: "⌘D"),
-            .init(category: "Tabs", name: "Tab 1", display: "⌘1"),
-            .init(category: "Tabs", name: "Tab 2", display: "⌘2"),
-            .init(category: "Tabs", name: "Tab 3", display: "⌘3"),
-            .init(category: "Tabs", name: "Tab 4", display: "⌘4"),
-            .init(category: "Tabs", name: "Tab 5", display: "⌘5"),
-            .init(category: "Tabs", name: "Tab 6", display: "⌘6"),
-            .init(category: "Tabs", name: "Tab 7", display: "⌘7"),
-            .init(category: "Tabs", name: "Tab 8", display: "⌘8"),
-            .init(category: "Tabs", name: "Tab 9", display: "⌘9"),
+            .init(category: "Tabs", name: "Tab 1", display: "⌘⌥1"),
+            .init(category: "Tabs", name: "Tab 2", display: "⌘⌥2"),
+            .init(category: "Tabs", name: "Tab 3", display: "⌘⌥3"),
+            .init(category: "Tabs", name: "Tab 4", display: "⌘⌥4"),
+            .init(category: "Tabs", name: "Tab 5", display: "⌘⌥5"),
+            .init(category: "Tabs", name: "Tab 6", display: "⌘⌥6"),
+            .init(category: "Tabs", name: "Tab 7", display: "⌘⌥7"),
+            .init(category: "Tabs", name: "Tab 8", display: "⌘⌥8"),
+            .init(category: "Tabs", name: "Tab 9", display: "⌘⌥9"),
 
             // Navigation
             .init(category: "Navigation", name: "Back", display: "⌘["),
