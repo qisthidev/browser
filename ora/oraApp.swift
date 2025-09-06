@@ -222,12 +222,14 @@ struct OraApp: App {
                 Divider()
 
                 Button("Next Tab") {
-                    appState.isFloatingTabSwitchVisible = true
+                    tabManager.switchToNextTab()
                 }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.next)
 
                 Button("Previous Tab") {
-                    appState.isFloatingTabSwitchVisible = true
+                    tabManager.switchToPreviousTab()
                 }
+                .keyboardShortcut(KeyboardShortcuts.Tabs.previous)
             }
         }
         Settings {

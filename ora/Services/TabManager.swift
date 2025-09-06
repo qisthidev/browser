@@ -345,6 +345,28 @@ class TabManager: ObservableObject {
         tab.updateHeaderColor()
         try? modelContext.save()
     }
+    
+    func switchToNextTab() {
+        guard let container = activeContainer else { return }
+        let tabs = container.tabs.filter(\.isWebViewReady).sorted { $0.order < $1.order }
+        guard tabs.count > 1, let currentTab = activeTab else { return }
+        
+        if let currentIndex = tabs.firstIndex(where: { $0.id == currentTab.id }) {
+            let nextIndex = (currentIndex + 1) % tabs.count
+            activateTab(tabs[nextIndex])
+        }
+    }
+    
+    func switchToPreviousTab() {
+        guard let container = activeContainer else { return }
+        let tabs = container.tabs.filter(\.isWebViewReady).sorted { $0.order < $1.order }
+        guard tabs.count > 1, let currentTab = activeTab else { return }
+        
+        if let currentIndex = tabs.firstIndex(where: { $0.id == currentTab.id }) {
+            let previousIndex = (currentIndex - 1 + tabs.count) % tabs.count
+            activateTab(tabs[previousIndex])
+        }
+    }
 
     private func fetchContainers() -> [TabContainer] {
         do {
