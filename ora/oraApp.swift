@@ -1,4 +1,4 @@
-THIS SHOULD BE A LINTER ERRORimport Foundation
+import Foundation
 import SwiftData
 import SwiftUI
 
