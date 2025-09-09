@@ -250,9 +250,7 @@ struct OraApp: App {
     @inline(never)
     private func createTabButton(for tabNumber: Int) -> some View {
         Button("Tab \(tabNumber)") {
-            DispatchQueue.main.async {
-                tabManager.switchToTabAtIndex(tabNumber)
-            }
+            tabManager.switchToTabAtIndex(tabNumber)
         }
         .keyboardShortcut(keyboardShortcutForTab(tabNumber))
     }
